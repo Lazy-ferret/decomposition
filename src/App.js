@@ -9,6 +9,7 @@ import NavMain from './components/NavMain';
 import Widget from './components/Widget';
 import WidgetsList from './components/WidgetsList';
 import { advertising, advertisingBanner, exchange, favourite, newsItems, onAir, searchExamples, tvProgramm } from './components/App.const'
+import { nanoid } from 'nanoid';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <div className='header-date'>{new Date().toLocaleString()}</div>
           </div>
           <NewsList items={newsItems}>
-            {items => items.map(news => <NewsItem news={news} />)}
+            {items => items.map(news => <NewsItem news={news} key={news.id} />)}
           </NewsList>
           <Exchange items={exchange} />
         </div>
@@ -43,7 +44,7 @@ function App() {
           </a>
         </div>
         <WidgetsList >
-          <Widget title='Погода' className='widget widget-weather'>
+          <Widget title='Погода' className='widget widget-weather' id={nanoid()}>
             <div className='weather-info'>
               <div>
                 <img
@@ -58,12 +59,12 @@ function App() {
               </div>
             </div>
           </Widget>
-          <Widget title='Карта Германии' className='widget widget-map'>
+          <Widget title='Карта Германии' className='widget widget-map' id={nanoid()}>
             <a href='#'>Расписания</a>
           </Widget>
           <Widget title='Эфир' className='widget widget-onAir'>
             {onAir.map(item =>
-              <div>
+              <div key={item.id}>
                 <img
                   style={{ width: 15, height: 15 }}
                   src="https://image.flaticon.com/icons/png/512/892/892666.png"
@@ -73,17 +74,17 @@ function App() {
               </div>
             )}
           </Widget>
-          <Widget title='Посещаемое' className='widget widget-visited'>
+          <Widget title='Посещаемое' className='widget widget-visited' id={nanoid()}>
             {favourite.map(item =>
-              <div>
+              <div key={item.id}>
                 <h6>{item.title}</h6>
                 <span>-{item.text}</span>
               </div>
             )}
           </Widget>
-          <Widget title='Телепрограмма' className='widget widget-tvProgramm'>
+          <Widget title='Телепрограмма' className='widget widget-tvProgramm' id={nanoid()}>
             {tvProgramm.map(item =>
-              <div>
+              <div key={item.id}>
                 <h6>{item.time}</h6>
                 <span style={{ fontWeight: 'bold' }} >{item.name}</span>
                 <span>{item.channel}</span>

@@ -8,7 +8,7 @@ export default function NavMain(props) {
         <div>
             <Nav className='Nav-Main'>
                 {searchCategory.map(item =>
-                    <NavItem>
+                    <NavItem key={item.id}>
                         <NavLink disabled={item.active ? '' : 'disabled'} href="#">
                             {item.title}
                         </NavLink>

@@ -8,7 +8,7 @@ export default function NavHeader(props) {
         <div>
             <Nav className='nav-left Nav-Header'>
                 {newsCategory.map(item =>
-                    <NavItem>
+                    <NavItem key={item.id}>
                         <NavLink disabled={item.active ? '' : 'disabled'} href="#">
                             {item.title}
                         </NavLink>
